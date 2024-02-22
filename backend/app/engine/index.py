@@ -3,12 +3,10 @@ from typing import Literal
 from llama_index.core import (
     VectorStoreIndex,
 )
-from app.engine.context import create_service_context
 from app.engine.utils import init_pg_vector_store_from_env
 from app.storage import chroma_vector_store
 
 def get_index(from_:Literal["postgres", "chroma"]="chroma"):
-    service_context = create_service_context()
     logger = logging.getLogger("uvicorn")
     if from_ == 'postgres':
         logger.info("Connecting to index from PGVector...")

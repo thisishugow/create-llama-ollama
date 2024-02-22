@@ -20,6 +20,7 @@ llama-index-vector-stores-chroma = "^0.1.1"
 llama-index-llms-ollama = "^0.1.1"
 llama-index = "^0.10.4"
 llama-index-vector-stores-postgres = "^0.1.1"
+transformers = "^4.38.1"
 
 [build-system]
 requires = ["poetry-core"]

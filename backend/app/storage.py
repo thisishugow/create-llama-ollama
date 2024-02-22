@@ -2,7 +2,10 @@ from llama_index.vector_stores.chroma import ChromaVectorStore
 from llama_index.core import StorageContext
 from chromadb import Collection, PersistentClient
 
-V_DB_NAME = "chromadb"
+from app.engine.utils import read_json_config
+conf = read_json_config()
+
+V_DB_NAME = conf.get("chromadb", "chromadb")
 chroma_client = PersistentClient(V_DB_NAME)
 COLLECTION_NAME:str = 'test'
 chroma_collection:Collection = chroma_client.get_or_create_collection(COLLECTION_NAME)

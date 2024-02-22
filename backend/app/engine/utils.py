@@ -1,4 +1,4 @@
-import os
+import os, json
 from llama_index.vector_stores.postgres import PGVectorStore
 from urllib.parse import urlparse
 from app.engine.constants import PGVECTOR_SCHEMA, PGVECTOR_TABLE
@@ -18,10 +18,18 @@ def init_pg_vector_store_from_env():
     async_conn_string = original_conn_string.replace(
         original_scheme, "postgresql+asyncpg://"
     )
-
+    conf = read_json_config()
     return PGVectorStore(
         connection_string=conn_string,
         async_connection_string=async_conn_string,
-        schema_name=PGVECTOR_SCHEMA,
-        table_name=PGVECTOR_TABLE,
+        schema_name=conf.get('pgvector_schema', PGVECTOR_SCHEMA),
+        table_name=conf.get('pgvector_table', PGVECTOR_TABLE),
     )
+
+def read_json_config(env:str='CREATE_LLAMA_APP_CONF')->dict:
+    fp:os.PathLike = os.environ.get(env, None)
+    if fp is None: 
+        return {}
+    with open(fp, 'r') as f:
+        res:dict = json.load(f)
+    return res
