@@ -5,7 +5,7 @@ from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 EMBDEDING_MODEL:str = "sentence-transformers/all-mpnet-base-v2"
 
 tokenizer = AutoTokenizer.from_pretrained(EMBDEDING_MODEL)
-sys_llm: Ollama = Ollama(model="mistral")
+sys_llm: Ollama = Ollama(model="gemma")
 sys_embedding: HuggingFaceEmbedding = HuggingFaceEmbedding(
     model_name=EMBDEDING_MODEL,
     tokenizer=tokenizer,

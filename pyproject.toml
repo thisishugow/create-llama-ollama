@@ -4,6 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["Marcus Schiesser <mail@marcusschiesser.de>"]
 readme = "README.md"
+packages = [{include = "backend/app"}]
 
 [tool.poetry.dependencies]
 python = "^3.11,<3.12"

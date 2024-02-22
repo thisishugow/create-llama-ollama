@@ -47,7 +47,6 @@ async def chat(
         )
         for m in data.messages
     ]
-    print('看訊息', lastMessage)
     # query chat engine
     response = await chat_engine.astream_chat(lastMessage.content, messages)
 

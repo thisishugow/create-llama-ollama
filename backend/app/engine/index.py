@@ -18,6 +18,6 @@ def get_index(from_:Literal["postgres", "chroma"]="chroma"):
         store = chroma_vector_store
     else: 
         ValueError(f"arg from_ must be in ['postgres', 'chroma']. Found='{from_}'")
-    index = VectorStoreIndex.from_vector_store(store, service_context)
+    index = VectorStoreIndex.from_vector_store(store)
     logger.info("Finished connecting to index from Vector Store.")
     return index
