@@ -8,7 +8,7 @@ from app.engine.utils import init_pg_vector_store_from_env
 from app.engine.loader import get_documents
 from app.storage import chroma_vector_store
 from app.engine.utils import read_json_config
-from app.conn_llm import sys_embedding, sys_llm
+from app.conn_llm import get_sys_embedding, get_sys_llm
 from app.engine.constants import CHUNK_SIZE, CHUNK_OVERLAP
 from app.engine.utils import read_json_config
 
@@ -25,8 +25,8 @@ logger = logging.getLogger()
 
 def generate_datasource(from_:Literal["postgres", "chroma"]='chroma'):
     conf = read_json_config()
-    Settings.llm = sys_llm
-    Settings.embed_model = sys_embedding
+    Settings.llm = get_sys_llm()
+    Settings.embed_model = get_sys_embedding()
     Settings.chunk_size = conf.get('chunk_size', CHUNK_SIZE) 
     Settings.chunk_overlap = conf.get('chunk_size', CHUNK_OVERLAP)
     logger.info("Creating new index")

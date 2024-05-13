@@ -10,7 +10,7 @@ packages = [{include = "backend/app"}]
 python = "^3.11,<3.12"
 fastapi = "^0.104.1"
 uvicorn = { extras = ["standard"], version = "^0.23.2" }
-pypdf = "^3.17.0"
+pypdf = "^4.0.2"
 python-dotenv = "^1.0.0"
 docx2txt = "^0.8"
 llama-hub = "^0.0.77"
@@ -18,9 +18,11 @@ wikipedia = "^1.4.0"
 llama-index-embeddings-huggingface = "^0.1.1"
 llama-index-vector-stores-chroma = "^0.1.1"
 llama-index-llms-ollama = "^0.1.1"
-llama-index = "^0.10.4"
 llama-index-vector-stores-postgres = "^0.1.1"
 transformers = "^4.38.1"
+langchain = "^0.1.9"
+llama-index-llms-langchain = "^0.1.3"
+llama-index = "^0.10.12"
 
 [build-system]
 requires = ["poetry-core"]

@@ -44,12 +44,14 @@ export default function ChatInput(
   };
 
   const handleUploadFile = async (file: File) => {
+
     try {
       if (props.multiModal && file.type.startsWith("image/")) {
         return await handleUploadImageFile(file);
       }
       props.onFileUpload?.(file);
     } catch (error: any) {
+      console.log(`檔案上傳錯誤：${error}`)
       props.onFileError?.(error.message);
     }
   };
@@ -62,6 +64,7 @@ export default function ChatInput(
       {imageUrl && (
         <UploadImagePreview url={imageUrl} onRemove={onRemovePreviewImage} />
       )}
+      
       <div className="flex w-full items-start justify-between gap-4 ">
         <Input
           autoFocus
@@ -71,10 +74,14 @@ export default function ChatInput(
           value={props.input}
           onChange={props.handleInputChange}
         />
-        <FileUploader
-          onFileUpload={handleUploadFile}
-          onFileError={props.onFileError}
-        />
+        { props.multiModal &&
+          (
+            <FileUploader
+              onFileUpload={handleUploadFile}
+              onFileError={props.onFileError}
+            />
+          )
+        }
         <Button type="submit" disabled={props.isLoading}>
           Send message
         </Button>

@@ -4,8 +4,10 @@ from fastapi.responses import StreamingResponse
 from llama_index.core.chat_engine.types import BaseChatEngine
 
 from app.engine import get_chat_engine
+from backend.app.engine.agents import get_compound_chat_engine
+
 from fastapi import APIRouter, Depends, HTTPException, Request, status
-from llama_index.core.llms.base import ChatMessage
+from llama_index.core.llms import ChatMessage
 from llama_index.core.types import MessageRole
 from pydantic import BaseModel
 
@@ -48,6 +50,7 @@ async def chat(
         for m in data.messages
     ]
     # query chat engine
+    # query_engine = get_compound_chat_engine()
     response = await chat_engine.astream_chat(lastMessage.content, messages)
 
     # stream response
