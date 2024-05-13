@@ -25,15 +25,13 @@ ENV OLLAMA_HOST=localhost:11434
 
 RUN mkdir /app
 RUN mkdir /app/data
-COPY app-0.1.0-py3-none-any.whl /app
-COPY main.py /app
-COPY config.json /app
-COPY docker-entrypoint.sh /usr/local/bin/
+COPY backend /app
+COPY dist/requirements.txt /app
+COPY dist/docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
-RUN pip3 install /app/app-0.1.0-py3-none-any.whl
-RUN rm /app/app-0.1.0-py3-none-any.whl
-
+WORKDIR /app
+RUN pip3 install -r requirements.txt
 
 ENTRYPOINT [ "docker-entrypoint.sh" ]
 EXPOSE 8080

@@ -2,6 +2,39 @@ This is a [LlamaIndex](https://www.llamaindex.ai/) project using [FastAPI](https
 
 ## Getting Started
 ### Quickstart
+#### Option 1) Clone project and setup by yourself
+```bash
+git clone https://github.com/thisishugow/create-llama-ollama.git
+cd create-llama-ollama
+poetry install
+```
+Install Ollama([Guide](https://ollama.com)). 
+```bash
+# After Ollama is installed.
+ollama pull llama3
+ollama serve &
+```
+
+Start the app:
+```bash
+poetry install
+poetry run ./backend/main.py -c config.json # you can make your configuration. 
+```
+Then visit [http://localhost:8080](http://localhost:8080) with your browser to see the result.
+
+#### Optional 2) Docker container
+
+```bash
+docker run --name my-offline-llama -p 8080:8080 thisisyuwang/create-llama-ollama:latest
+
+```
+> ⚠️ WARNING: It will take minutes to download LLM at the first time.   
+
+Then visit [http://localhost:8080](http://localhost:8080) with your browser to see the result.
+
+
+
+### For Development
 Startup the backend as described in the [backend README](./backend/README.md).
 
 Second, run the development server of the frontend as described in the [frontend README](./frontend/README.md).

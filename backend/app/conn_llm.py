@@ -45,6 +45,6 @@ def get_sys_embedding() -> HuggingFaceEmbedding:
         tokenizer=tokenizer,
         cache_folder=conf.get("cache_folder", "cache_folder"),
         max_length=512,
-        device="mps",
+        # device="mps",
     )
     return sys_embedding

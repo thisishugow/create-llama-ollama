@@ -4,7 +4,6 @@ from fastapi.responses import StreamingResponse
 from llama_index.core.chat_engine.types import BaseChatEngine
 
 from app.engine import get_chat_engine
-from backend.app.engine.agents import get_compound_chat_engine
 
 from fastapi import APIRouter, Depends, HTTPException, Request, status
 from llama_index.core.llms import ChatMessage
