@@ -25,8 +25,11 @@ Then visit [http://localhost:8080](http://localhost:8080) with your browser to s
 #### Optional 2) Docker container
 
 ```bash
-docker run --name my-offline-llama -p 8080:8080 thisisyuwang/create-llama-ollama:latest
+# for Windows WSL2/Linux
+docker run --name my-offline-llama -p 8080:8080 thisisyuwang/create-llama-ollama:latest-linux-amd64 
 
+# for Mac arm64
+docker run --name my-offline-llama -p 8080:8080 thisisyuwang/create-llama-ollama:latest-arm64 
 ```
 > ⚠️ WARNING: It will take minutes to download LLM at the first time.   
 
