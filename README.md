@@ -1,5 +1,9 @@
 This is a [LlamaIndex](https://www.llamaindex.ai/) project using [FastAPI](https://fastapi.tiangolo.com/) bootstrapped with [`create-llama`](https://github.com/run-llama/LlamaIndexTS/tree/main/packages/create-llama).
 
+**Demo** 
+<a href="https://youtu.be/qcpgABzRrQk" target="_blank"><img src="./assets/img/demo-cover.png" width="800px"/></a>
+
+
 ## Getting Started
 ### Quickstart
 #### Option 1) Clone project and setup by yourself
@@ -8,7 +12,7 @@ git clone https://github.com/thisishugow/create-llama-ollama.git
 cd create-llama-ollama
 poetry install
 ```
-Install Ollama([Guide](https://ollama.com)). 
+Download and install `Ollama`([Guide](https://ollama.com)). 
 ```bash
 # After Ollama is installed.
 ollama pull llama3
@@ -18,7 +22,7 @@ ollama serve &
 Start the app:
 ```bash
 poetry install
-poetry run ./backend/main.py -c config.json # you can make your configuration. 
+poetry run ./backend/main.py -c ./backend/config.json # you can make your configuration. 
 ```
 Then visit [http://localhost:8080](http://localhost:8080) with your browser to see the result.
 
